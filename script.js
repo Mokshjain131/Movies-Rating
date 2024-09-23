@@ -4,11 +4,12 @@ const API_KEY = config.OMDB_API_KEY;
 let page_no = 1;
 
 // @param {string} name 
-async function fetchMovies(name) {
+async function fetchMovies(movieName) {
   try {
-    let URL = `http://www.omdbapi.com/?s=${name}&page=${page_no}&apikey=${API_KEY}`;
+    let URL = `http://www.omdbapi.com/?s=${movieName}&page=${page_no}&apikey=${API_KEY}`;
     const response = await fetch(URL);
     const result = await response.json();
+    
     const movies = document.getElementById('movie_list');
     movies.innerHTML = '';
 
@@ -22,7 +23,20 @@ async function fetchMovies(name) {
   }
 }
 
-fetchMovies('Avengers');
+const searchIcon = document.getElementById('search-icon');
+const searchBar = document.getElementById('search-bar');
+
+searchIcon.addEventListener('click', () => {
+  const searchValue = searchBar.value;
+  if (searchValue) {
+    fetchMovies(searchValue);
+  }
+});
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+// fetchMovies('Avengers');
 
 
 

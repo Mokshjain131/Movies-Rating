@@ -9,7 +9,7 @@ async function fetchMovies(movieName) {
     let URL = `http://www.omdbapi.com/?s=${movieName}&page=${page_no}&apikey=${API_KEY}`;
     const response = await fetch(URL);
     const result = await response.json();
-    
+
     const movies = document.getElementById('movie_list');
     movies.innerHTML = '';
 
@@ -23,15 +23,22 @@ async function fetchMovies(movieName) {
   }
 }
 
-const searchIcon = document.getElementById('search-icon');
-const searchBar = document.getElementById('search-bar');
-
-searchIcon.addEventListener('click', () => {
+function searchMovies() {
   const searchValue = searchBar.value;
   if (searchValue) {
     fetchMovies(searchValue);
   }
-});
+}
+
+const searchIcon = document.getElementById('search-icon');
+const searchBar = document.getElementById('search-bar');
+
+searchIcon.addEventListener('click', searchMovies);
+searchBar.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    searchMovies();
+  }
+}) 
 
 
 

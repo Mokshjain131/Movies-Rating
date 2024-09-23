@@ -4,7 +4,7 @@ const API_KEY = config.OMDB_API_KEY;
 let page_no = 1;
 
 // @param {string} name 
-
+// samar kamat
 async function fetchMovies(name) {
   try {
     let URL = `http://www.omdbapi.com/?s=${name}&page=${page_no}&apikey=${API_KEY}`;

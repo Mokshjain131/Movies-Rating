@@ -1,6 +1,10 @@
-import { config } from "./config.js";
+import logo from './logo.svg';
+import './App.css';
 
-const API_KEY = config.OMDB_API_KEY;
+// import config from "./config.js";
+
+const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+console.log(API_KEY);
 let page_no = 1;
 
 // @param {string} name 
@@ -63,3 +67,39 @@ searchBar.addEventListener('keypress', (e) => {
 // const env = process.env;
 // module.exports = env;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function App() {
+//   console.log(process.env.REACT_APP_OMDB_API_KEY);
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;

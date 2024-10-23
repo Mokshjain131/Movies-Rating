@@ -1,0 +1,159 @@
+body {
+  background-image: url(../public/assets/Background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.navbar {
+  background-color: rgb(18, 18, 18);
+  display: flex;
+  height: 80px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* overflow: hidden; */
+  z-index: 100;
+  /* border-bottom: rgb(31, 31, 48);
+  border-width: 3px;
+  border-style: solid ; */
+}
+
+.navbar a {
+  color: white;
+  margin-right: auto;
+  text-decoration: none;
+  padding: 10px;
+  background-color: rgb(31, 31, 48);
+  border-radius: 30px;
+  margin: 20px;   
+}
+
+#login {
+  margin-left: auto;
+}
+
+.head {
+  /* margin-top:80px; */
+  background-color: rgb(31, 31, 48);
+  font-size: large;
+  text-align: center;
+  padding: 20px;
+  top: 80px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 95;
+  /* position: relative; */
+  /* width: 101%;
+  transform: translateX(-0.5%); */
+}
+
+.back_image {
+  padding-top: 10px;
+  margin-top: 160px;
+  background-color: rgba(18, 18, 18, 0.85);
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;    
+  /* transform: translateX(-10px); */
+  height: 700px;
+  color: white;
+  display: block;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.back_image div input {
+  color: gray;
+  padding: 20px;
+  border-radius: 25px;
+  border-color: gray;
+  border-width: 2px;
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+  padding-right: 40px;
+  z-index: 10;
+  position: relative;
+  padding-right: 40px;
+}
+
+#search-icon {
+  color: white;
+  position: absolute;
+  right: 140px;
+  transform: translateY(-145%);
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 15;
+}
+
+#movie_list {
+  height: auto;
+  background-color: white;
+  color: black;
+}
+
+.expand {
+  margin-top: 800px;
+  background-color: rgb(31, 31, 48);
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: 650px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.expand div {
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expand div img {
+  height: 350px;
+  width: 12vw;
+  border-radius: 5px;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  
+}
+
+.expand div img:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  position: absolute;
+  top: 1600px;
+  left: 0;
+  right: 0;
+  background-color: rgb(18, 18, 18);
+  padding: 20px;
+  color: white;
+  text-align: center;
+  z-index: 1001;
+}
+
+/* .expand div:hover img:not(:hover) {
+  transform: scale(1.1);
+}    */
+
+

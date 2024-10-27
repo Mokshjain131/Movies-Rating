@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import reportWebVitals from './reportWebVitals';
 
 // import config from "./config.js";
+reportWebVitals(console.log)
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 console.log(API_KEY);

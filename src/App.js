@@ -1,12 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import reportWebVitals from './reportWebVitals';
-
-// import config from "./config.js";
-reportWebVitals(console.log)
+import React from 'react';
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-console.log(API_KEY);
 let page_no = 1;
 
 // @param {string} name 
@@ -18,7 +14,7 @@ async function fetchMovies(movieName) {
 
     const movies = document.getElementById('movie_list');
     movies.innerHTML = '';
-
+ 
     result.Search.forEach(movie => {
       const movieItem = document.createElement('li');
       movieItem.textContent = `${movie.Title} (${movie.Year})`
@@ -31,7 +27,7 @@ async function fetchMovies(movieName) {
 
 function searchMovies() {
   const searchValue = searchBar.value;
-  if (searchValue) {
+  if (searchValue) { 
     fetchMovies(searchValue);
   }
 }

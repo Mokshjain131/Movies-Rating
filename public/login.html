@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A Place to rate your favourite movies and series." />
-    <meta name="keywords" content="movies, series, ratings">    
+    <meta name="description" content="Login and Signup">
+    <meta name="keywords" content="login, signup">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Login/Signup</title>
 </head>
 <body>
-    
+    <h1>Login/Signup</h1>
+    <div id="login-form">
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div id="signup-form">
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password"><br><br>
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+    <script src="../src/App.js"></script>
 </body>
 </html>

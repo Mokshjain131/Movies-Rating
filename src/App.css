@@ -152,6 +152,42 @@ footer {
   z-index: 1001;
 }
 
+#movie_list {
+  /* list-style: none; */
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto;
+}
+
+#movie_list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+#movie_list li:hover {
+  background-color: #f0f0f0;
+}
+
+#movie_list li:last-child {
+  border-bottom: none;
+}
+
+#movie_list li span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+#movie_list li span:hover {
+  text-decoration: underline;
+}
+
 /* .expand div:hover img:not(:hover) {
   transform: scale(1.1);
 }    */

@@ -55,6 +55,12 @@ searchBar.addEventListener('input', async () => {
   }
 }) 
 
+document.addEventListener('click', (e) => {
+  if (e.target !== searchBar && e.target.parentNode !== movies) {
+    movies.innerHTML = '';
+  }
+})
+
 searchIcon.addEventListener('click', searchRouting);
 searchBar.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {

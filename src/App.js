@@ -70,10 +70,11 @@ searchBar.addEventListener('keypress', (e) => {
 
 
 
+
+
+
 // document.addEventListener('DOMContentLoaded', () => {
 // fetchMovies('Avengers');
-
-
 
 
 

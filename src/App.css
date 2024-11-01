@@ -88,10 +88,15 @@ h1 {
   padding-right: 40px;
 }
 
+.searchbar{
+  position: relative;
+  display: inline;
+}
+
 #search-icon {
   color: white;
   position: absolute;
-  right: 140px;
+  right: 160px;
   transform: translateY(-145%);
   font-size: 20px;
   width: 30px;

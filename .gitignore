@@ -4,6 +4,8 @@ package-lock.json
 package.json
 config.js
 manifest.json
+notes.txt
+TMDB.txt
 
 /node_modules
 /.pnp

@@ -2,43 +2,63 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
-const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-let page_no = 1;
+const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+// let page_no = 1;
 
-// @param {string} name 
-async function fetchMovies(movieName) {
+const searchIcon = document.getElementById('search-icon');
+const searchBar = document.getElementById('search-bar');
+const movies = document.getElementById('movie_list');
+
+// @param {string} name
+async function fetchName(movieName) {
   try {
-    let URL = `http://www.omdbapi.com/?s=${movieName}&page=${page_no}&apikey=${API_KEY}`;
+    // let URL = `http://www.omdbapi.com/?s=${movieName}&page=${page_no}&apikey=${OMDB_API_KEY}`;
+    let URL = `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=${TMDB_API_KEY}`;
     const response = await fetch(URL);
     const result = await response.json();
-
-    const movies = document.getElementById('movie_list');
-    movies.innerHTML = '';
- 
-    result.Search.forEach(movie => {
-      const movieItem = document.createElement('li');
-      movieItem.textContent = `${movie.Title} (${movie.Year})`
-      movies.appendChild(movieItem);
-    });
+    return result;
   } catch (error) {
     console.error(error);
   }
 }
 
-function searchMovies() {
+function suggestions(result) {
+  const movies = document.getElementById('movie_list');
+  movies.innerHTML = '';
+  
+  // const maxResults = Math.min(10, result.results.length);
+  // for (let i = 0; i < maxResults; i++) {
+
+  const results = result.results.slice(0, 10);
+  results.forEach((movie) => {
+    const movieItem = document.createElement('li');
+    movieItem.textContent = `${movie.title} (${movie.release_date})`;
+    movies.appendChild(movieItem);
+  });
+}
+
+function searchRouting() {
   const searchValue = searchBar.value;
   if (searchValue) { 
-    fetchMovies(searchValue);
+    window.location.href = `search.html?movie=${encodeURIComponent(searchValue)}`;
   }
 }
 
-const searchIcon = document.getElementById('search-icon');
-const searchBar = document.getElementById('search-bar');
+searchBar.addEventListener('input', async () => {
+  const searchValue = searchBar.value;
+  if (searchValue) { 
+    const result = await fetchName(searchValue);
+    suggestions(result);
+  } else {
+    movies.innerHTML = '';
+  }
+}) 
 
-searchIcon.addEventListener('click', searchMovies);
+searchIcon.addEventListener('click', searchRouting);
 searchBar.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    searchMovies();
+    searchRouting();
   }
 }) 
 

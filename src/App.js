@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import React from 'react';
 
 const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;

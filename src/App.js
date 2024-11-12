@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './styles/App.css';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 const OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -9,6 +10,7 @@ const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const searchIcon = document.getElementById('search-icon');
 const searchBar = document.getElementById('search-bar');
 const movies = document.getElementById('movie_list');
+const searchResults = document.getElementById('search-results');
 
 // @param {string} name
 async function fetchName(movieName) {
@@ -24,7 +26,6 @@ async function fetchName(movieName) {
 }
 
 function suggestions(result) {
-  const movies = document.getElementById('movie_list');
   movies.innerHTML = '';
   
   // const maxResults = Math.min(10, result.results.length);
@@ -45,35 +46,78 @@ function searchRouting() {
   }
 }
 
-searchBar.addEventListener('input', async () => {
-  const searchValue = searchBar.value;
-  if (searchValue) { 
-    const result = await fetchName(searchValue);
-    suggestions(result);
+function displayMovies(result) {
+  searchResults.innerHTML = '';
+
+  result.forEach((movie) => {
+    const movieItem = document.createElement('p');
+    movieItem.textContent = `${movie.title} (${movie.release_date})`;
+    searchResults.appendChild(movieItem);
+  });
+}
+
+async function searchDisplay (movieName) {
+  try {
+    const result = await fetchName(movieName);
+    if (result && result.results) {
+      displayMovies(result.results);
+    }
+  } catch (error) {
+    console.error('Error displaying search results:', error);
+  }
+}
+
+function initializeHome() {
+  searchBar.addEventListener('input', async () => {
+    const searchValue = searchBar.value;
+    if (searchValue) { 
+      const result = await fetchName(searchValue);
+      suggestions(result);
+    } else {
+      movies.innerHTML = '';
+    }
+  }) 
+  
+  document.addEventListener('click', (e) => {
+    if (e.target !== searchBar && e.target.parentNode !== movies) {
+      movies.innerHTML = '';
+    }
+  })
+  
+  searchIcon.addEventListener('click', searchRouting);
+  searchBar.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      searchRouting();
+    }
+  }) 
+}
+
+function initializeSearch() {
+  console.log('Search');
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieName = urlParams.get('movie');
+
+  if (movieName) {
+    searchDisplay(movieName);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('JavaScript code is being executed');
+  const currentPath = window.location.pathname;
+  console.log(currentPath);
+
+  if (currentPath === '/search.html') {
+    console.log('Search');
+    console.log(currentPath);
+    initializeSearch();
   } else {
-    movies.innerHTML = '';
+    console.log('Home');
+    console.log(currentPath);
+    initializeHome();
   }
-}) 
+});
 
-document.addEventListener('click', (e) => {
-  if (e.target !== searchBar && e.target.parentNode !== movies) {
-    movies.innerHTML = '';
-  }
-})
-
-searchIcon.addEventListener('click', searchRouting);
-searchBar.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    searchRouting();
-  }
-}) 
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
 // fetchMovies('Avengers');
 
 

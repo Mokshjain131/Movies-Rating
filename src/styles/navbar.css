@@ -1,0 +1,31 @@
+.navbar {
+    background-color: rgb(18, 18, 18);
+    display: flex;
+    height: 80px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* overflow: hidden; */
+    z-index: 100;
+    /* border-bottom: rgb(31, 31, 48);
+    border-width: 3px;
+    border-style: solid ; */
+}
+  
+.navbar a {
+    color: white;
+    margin-right: auto;
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgb(31, 31, 48);
+    border-radius: 30px;
+    margin: 20px;   
+}
+  
+#login {
+    margin-left: auto;
+}
+  
